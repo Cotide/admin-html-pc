@@ -1,0 +1,176 @@
+/*公共*/
+
+* { 
+    outline: none !important;
+  }
+  body,
+  div,
+  ol,
+  ul,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  th,
+  td,
+  dl,
+  dd,
+  form,
+  iframe,
+  input,
+  textarea,
+  select,
+  label,
+  article,
+  aside,
+  footer,
+  header,
+  menu,
+  nav,
+  section,
+  time,
+  audio,
+  video {
+    margin: 0;
+    padding: 0;
+  }
+  article,
+  aside,
+  footer,
+  header,
+  nav,
+  section,
+  audio,
+  canvas,
+  video {
+    display: block;
+  }
+  html,
+  body {
+    font-size: 12px;
+    font-family: "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", "\5b8b\4f53", Arial, tohoma, sans-serif;
+    margin: 0 auto;
+    background: #FFF;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-touch-callout: none;
+  }
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  menu,
+  nav,
+  section {
+    display: block;
+  }
+  iframe,
+  fieldset,
+  img,
+  a img {
+    border: none;
+  }
+  address,
+  caption,
+  cite,
+  code,
+  dfn,
+  em,
+  strong,
+  th,
+  var {
+    font-weight: normal;
+    font-style: normal;
+  }
+  ul,
+  ol {
+    list-style: none;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: normal;
+    font-size: 100%;
+  }
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    text-decoration: none;
+    outline: none;
+  }
+  
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  textarea {
+    resize: none;
+  }
+  input,
+  select,
+  img {
+    vertical-align: middle;
+  }
+
+/*头部导航*/ 
+.m_top_panel{
+    background-color: #1679ce;
+}
+.n_top_l{
+    float: left;
+    height: 58px;
+    width: 410px; 
+}
+.n_top_l .logo{
+    width:200px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #ddd;
+    margin: 10px;
+    text-align: center; 
+    vertical-align:middle; 
+}
+.n_top_r {
+    float: right;
+    height: 58px;
+    text-align: right;
+    color: #ffffff; 
+} 
+.n_top_r span{
+    color: #ffffff;
+}
+.n_top_r span a{
+    color: #ffffff;
+}
+/*左菜单*/
+ 
+.l-link {
+    display: block;
+    height: 26px;
+    line-height: 26px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    color: #333;
+    border-top:  1px solid #ffffff; 
+    border-left:  1px solid #ffffff; 
+    border-right:  1px solid #ffffff; 
+    border-bottom: 1px dotted #e1e1e1;
+}
+
+.l-link-over {
+    background: #E5EFFE;
+    border: 1px solid #428bca; 
+}

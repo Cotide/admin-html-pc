@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>工作台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+    <link rel="stylesheet" type="text/css" href="lib/ligerUI/skins/Aqua/css/ligerui-all.css" /> 
+    <link rel="stylesheet" type="text/css" href="lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="lib/font-awesome/css/font-awesome-ie7.min.css" /> 
+    <link rel="stylesheet" type="text/css" href="themes/main.css" /> 
+    <script type="text/javascript" src="lib/jquery/jquery-1.8.2.min.js"></script>  
+    <script type="text/javascript" src="lib/ligerUI/js/ligerui.all.js"></script>
+    <script type="text/javascript" src="lib/core/ligerui-init.js"></script> 
+    <script type="text/javascript"> 
+     // Tab 控件
+     var tab;
+    // 定义一个计时器（用于检测iframe tab内容加载时间是否过长）
+     var w_timeOut = null;
+     //初始化
+     $(function () {     
+        // 面板初始化
+        var sjtCore = sjt.ligerui.init({
+            menuData: [{
+                            "text": "主菜单1",
+                            "isexpand": false,
+                            "id": "1",
+                            "icon":"",
+                            "children": [{
+                                "url": "welcome.html",
+                                "text": "主菜单1-1",
+                                "id": "4" , 
+                                "icon":"icon-info-sign"
+                            },
+                            {
+                                "url": "welcome.html",
+                                "text": "主菜单1-2",
+                                "id": "5" , 
+                                "icon":""
+                            },
+                            {
+                                "url": "welcome.html",
+                                "text": "主菜单1-3",
+                                "id": "6" , 
+                                "icon":"icon-male"
+                            }]
+                        },
+                        {
+                            "text": "主菜单2",
+                            "isexpand": false,
+                            "id": "2",
+                            "children": [], 
+                             "icon":"icon-calendar"
+                        },
+                        {
+                            "text": "主菜单3",
+                            "isexpand": false,
+                            "id": "3",
+                            "children": [], 
+                            "icon":"",
+                            "url":"http://baidu.com",
+                            "children": [{
+                                "url": "welcome.html",
+                                "text": "主菜单4-1",
+                                "id": "98" , 
+                                "icon":"icon-info-sign"
+                            },
+                            {
+                                "url": "welcome.html",
+                                "text": "主菜单4-2",
+                                "id": "97" , 
+                                "icon":"icon-cogs"
+                            },
+                            {
+                                "url": "welcome.html",
+                                "text": "主菜单4-3",
+                                "id": "96" , 
+                                "icon":"icon-male"
+                            }]
+                        },
+                        {
+                            "text": "主菜单4",
+                            "isexpand": false,
+                            "id": "99",
+                            "icon":"icon-check",
+                            "children": [{
+                                "url": "welcome.html",
+                                "text": "主菜单4-1",
+                                "id": "98" , 
+                                "icon":"icon-info-sign"
+                            },
+                            {
+                                "url": "welcome.html",
+                                "text": "主菜单4-2",
+                                "id": "97" , 
+                                "icon":"icon-cogs"
+                            },
+                            {
+                                "url": "welcome.html",
+                                "text": "主菜单4-3",
+                                "id": "96" , 
+                                "icon":"icon-male"
+                            }]
+                        },]
+        });
+        tab = sjtCore.tab; 
+        // f_addTab(1, "1", "welcome.html", false);
+        //     f_addTab(2, "1", "welcome.html", false);
+        //     f_addTab(3, "1", "welcome.html", false);
+        //     f_addTab(4, "1", "welcome.html", false);
+        //     f_addTab(5, "1", "welcome.html", false);
+        //     f_addTab(6, "1", "welcome.html", false);
+        //     f_addTab(7, "1", "welcome.html", false);
+        //     f_addTab(8, "1", "welcome.html", false);
+        //     f_addTab(9, "1", "welcome.html", false);
+        //     f_addTab(10, "1", "welcome.html", false);
+        //     f_addTab(11, "1", "welcome.html", false);
+        //     f_addTab(12, "1", "welcome.html", false);
+        //     f_addTab(13, "1", "welcome.html", false);
+        //     f_addTab(14, "1", "welcome.html", false);
+        //     f_addTab(15, "1", "welcome.html", false);
+        //     f_addTab(16, "1", "welcome.html", false);
+        //     f_addTab(17, "1", "welcome.html", false);
+        //     f_addTab(18, "1", "welcome.html", false);
+        //     f_addTab(19, "1", "welcome.html", false);
+        //     f_addTab(20, "1", "welcome.html", false);
+        //     f_addTab(21, "1", "welcome.html", false);
+        //     f_addTab(22, "1", "welcome.html", false);
+        //     f_addTab(23, "1", "welcome.html", false);
+        //     f_addTab(24, "1", "welcome.html", false);
+        //     f_addTab(25, "1", "welcome.html", false);
+        //     f_addTab(26, "1", "welcome.html", false);
+
+     });
+
+
+    // 新增Tab
+    function f_addTab(tabid, text, url, isReLoad) {
+            clearTimeout(w_timeOut);
+            w_timeOut = setTimeout(function () {
+                $.ligerDialog.warn('当前网络环境不给力');
+            }, 8000); 
+            if (isReLoad === true) {
+                if (tab.isTabItemExist(tabid)) {
+                        tab.selectTabItem(tabid);
+                        tab.reload(tabid);
+
+                        var contentitem = $(".l-tab-content-item[tabid=" + tabid + "]");
+                        var iframe = $("iframe:first", contentitem);
+                    iframe.bind('load.tab', function () {  iframeLoad(); });
+                } else {
+                    tab.addTabItem({ tabid: tabid, text: text, url: url, callback: iframeLoad });
+                }
+            } else {
+                tab.addTabItem({ tabid: tabid, text: text, url: url, callback: iframeLoad });
+            }
+    }
+
+    // 刷新 Tab内容
+    function f_reload(tabid) {
+        tab.reload(tabid);
+    }
+
+    //加载完成事件方法
+    function iframeLoad() {
+        clearTimeout(w_timeOut);
+    };
+    </script>
+</head>
+<body >
+        <div id="pageloading">
+        </div>
+        <!-- 头部导航/Start -->
+        <div class="m_top_panel" data-options="region:'north',border:false" style="height:60px;padding:0px">  
+                <div class="n_top_l">
+                   <div class="logo"> 管理后台系统 (200 x 40) </div>
+                </div> 
+                <!-- 顶部导航/Start -->
+                <div class="n_top_r">
+                        <div style="padding-right:10px; padding-top:9px;">
+                            <table cellpadding="0" cellspacing="0" border="0">
+                                <tbody>
+                                 <tr>
+                                    <td rowspan="2" valign="middle" style="vertical-align:middle; padding-right:10px;">
+                                        <img src="http://ww4.sinaimg.cn/bmiddle/9fea8126gy1frejwu5mrvj20lc0lcmz6.jpg" width="38" height="38" style="vertical-align:middle;border-radius:80px" >
+                                    </td>
+                                    <td style="text-align:left;">
+                                        <div>
+                                            <span>欢迎您：Admin</span> 
+                                            <span style="margin-right:6px;">今天是：2018年6月19日 星期二 </span>  
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left;">
+                                        <div style="margin-top:6px;"> 
+                                            <span style="margin-right:6px;"><a href="javascript:void(0);"  class="white">平台首页</a></span>
+                                            <span style="margin-right:6px;">|</span>
+                                            <span style="margin-right:6px;"><a href="javascript:void(0);"  class="white">修改密码</a></span>
+                                            <span style="margin-right:6px;">|</span>
+                                            <span style="margin-right:4px;"><a href="javascript:void(0);" onclick="if(confirm('您真的要退出系统吗?')){} return false;" class="white">退出系统</a></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                           </table>
+                        </div>  
+                </div> 
+                <!-- 顶部导航/End -->
+                <div style="clear:both;"></div>
+
+        </div> 
+        <!-- 头部导航/End --> 
+       
+        <!--  主体内容/Start -->
+        <div id="layout1" style="width: 100%; margin: 0 auto; margin-top: 2px;  ">
+                <!-- 左菜单 --> 
+                <div position="left"   icon="icon-home" title="系统菜单" id="accordion1"  > 
+                </div>
+                <!--  内容 -->
+            <div position="center" id="framecenter" >
+                <div tabid="home" title="首页" style="height: 300px">
+                    <iframe frameborder="0" scrolling="auto" name="home" id="home" src="welcome.html"></iframe>
+                </div>
+            </div>
+        </div>
+        <!--  主体内容/End --> 
+        <!-- 底部/Start -->  
+        <div style="height: 32px; line-height: 32px; text-align: center;background-color: #ddd;">
+                Copyright © 2011-2018 github.com    
+         </div> 
+        <!-- 底部/End --> 
+    </body>
+</html>
+
+
+
